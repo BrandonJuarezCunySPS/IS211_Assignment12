@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+    <h1>Welcome to the Dashboard</h1>
+    <p><a href="{{ url_for('add_student') }}">Add Student</a></p>
+    <p><a href="{{ url_for('add_quiz') }}">Add Quiz</a></p>
+    <p><a href="{{ url_for('add_result') }}">Add Result</a></p>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+
+    <h2>Students</h2>
+    <table>
+        <tr><th>ID</th><th>Name</th></tr>
+        {% for student in students %}
+            <tr>
+                <td>{{ student[0] }}</td>
+                <td><a href="{{ url_for('student_results', id=student[0]) }}">{{ student[1] }} {{ student[2] }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Quizzes</h2>
+    <table>
+        <tr><th>ID</th><th>Subject</th><th>Questions Count</th><th>Date Given</th></tr>
+        {% for quiz in quizzes %}
+            <tr>
+                <td>{{ quiz[0] }}</td>
+                <td>{{ quiz[1] }}</td>
+                <td>{{ quiz[2] }}</td>
+                <td>{{ quiz[3] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
